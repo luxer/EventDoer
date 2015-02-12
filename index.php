@@ -1,4 +1,3 @@
-<?php error_reporting(E_ALL); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +11,8 @@
 <?php
 require 'Config/Main.php';
 if (array_key_exists('path', $_GET) && count(explode('/',$_GET['path'])) > 0) {
-  $path = explode('/',$_GET['path']);
-  $event = new Event($db, $path[0]);
+    $path = explode('/',$_GET['path']);
+    $event = new Event($db, $path[0]);
     if ($event->exists()) {
         echo '<header><h1>'.$event->getName().'</h1>';
         echo '<p>'.$event->getDescription().'</p></header>';
@@ -31,7 +30,7 @@ if (array_key_exists('path', $_GET) && count(explode('/',$_GET['path'])) > 0) {
 
 
             if ($specificEvent->isCanceled()) {
-                echo '<p class="status">'.$LANG[LANGUAGE]['event_canceled'];
+                echo '<p class="status">'.$LANG[LANGUAGE]['event_canceled'].'</p>';
             } else {
                 if ($specificEvent->isJoinable()) {
                     $showForm = true;
@@ -72,7 +71,7 @@ if (array_key_exists('path', $_GET) && count(explode('/',$_GET['path'])) > 0) {
                     echo '</div>';
 
                 } else {
-                    echo $LANG[LANGUAGE]['participate_cant'];
+                    echo '<p class="status">'.$LANG[LANGUAGE]['participate_cant'].'</p>';
                 }
             }
 

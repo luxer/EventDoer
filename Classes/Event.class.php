@@ -41,7 +41,14 @@ class Event {
     }
 
     public function getNewestSpecificEvent() {
-        $repeatTime = ceil((time() - $this->firstTime) / $this->repeatTime);
+        $currTime = time();
+        $repeatTime = ceil(($currTime - $this->firstTime) / $this->repeatTime);
+        $prevEventTime = $this->firstTime + ($repeatTime - 1) * $this->repeatTime;
+
+        if ($currTime  < $prevEventTime + $this->duration) {
+            $repeatTime--;
+        }
+
         $nextEventTime = $this->firstTime + $repeatTime * $this->repeatTime;
 
         $specificEvent = new SpecificEvent($this->db, $this, $nextEventTime);

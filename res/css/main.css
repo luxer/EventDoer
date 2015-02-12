@@ -11,6 +11,7 @@ body {
   width: 90%;
   border-radius: 10px;
   box-shadow: 0 0 7px 1px #C8C8C8;
+  border: 1px solid #c8c8c8;
   overflow: hidden;
 }
 
@@ -38,6 +39,7 @@ header p {
 
 main {
   color: #404040;
+  background: #ffffff;
 }
 main h2 {
   font-size: 20px;
@@ -62,6 +64,14 @@ main .join label {
   width: 150px;
 }
 
+
+main .infos > div {
+  display: table-row;
+}
+main .infos label {
+    display: table-cell;
+}
+
 main .join select {
   margin: 10px 10px 0 0;
   width: 150px;
@@ -80,12 +90,115 @@ main .infos {
   padding: 10px;
 }
 
-@media only screen and (max-device-width:480px){
 
-  main .join label,
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  padding: 5px 10px;
+  text-align: right;
+}
+tr:nth-of-type(2n+1) {
+  background: none repeat scroll 0 0 #e9e9e9;
+}
+th:first-child, td:first-child {
+  text-align: left;
+}
+th + th, td + td {
+  border-left: 1px solid #808080;
+}
+thead {
+  border-bottom: 1px solid #808080;
+}
+tfoot {
+  border-top: 1px solid #808080;
+}
+
+
+@media only screen and (max-device-width:900px) {
+  main table {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-device-width:800px) {
+  main table {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-device-width:700px) {
+
+  main table {
+    font-size: medium;
+  }
+
+  thead {
+    border-bottom: none;
+  }
+
+  table, thead, tbody, tfoot, th, td, tr {
+    display: block;
+  }
+
+  td + td {
+    border-left: none;
+    border-top: 1px solid #e9e9e9;
+  }
+
+
+  tr:nth-of-type(2n+1) td + td {
+    background: none repeat scroll 0 0 #e9e9e9;
+    border-top: 1px solid #d3d3d3;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  td:first-child {
+    font-weight: 700;
+    padding-left: 10px;
+  }
+}
+
+@media only screen and (max-device-width:480px){
+  main label,
   main .join input,
   main .join select {
     width: 100%;
-    margin: 0 10px 10px 0;
+    display: block;
+    margin: 10px 0 0 0;
+  }
+
+  main .infos > div {
+    display: block;
+    margin-bottom: 10px;
+}
+}
+
+@media only screen and (max-device-width:320px) {
+  body {
+    width: 320px;
+  }
+  .wrapper {
+    width: 288px;
   }
 }
